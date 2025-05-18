@@ -1,0 +1,1 @@
+jupyterhub --config=jupyterhub_config.py > jh.out 2>&1 &
