@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------
+# Make sure we're in the home directory
+# -----------------------------------------------------------------------
+cd
+
+# -----------------------------------------------------------------------
+# Update
+# -----------------------------------------------------------------------
+# Prevent questions about restarting services
+export DEBIAN_FRONTEND=noninteractive
+apt-get -y update 
+
+# -----------------------------------------------------------------------
+# Install default linux packages
+# -----------------------------------------------------------------------
+apt-get -y install git
+apt-get -y install python3 
+apt-get -y install python3-pip 
+apt-get -y install certbot
+apt-get -y install python3-certbot
+apt-get -y install python3-certbot-nginx
+apt-get -y install nginx
+apt-get -y install docker
+apt-get -y install unzip
+
+# -----------------------------------------------------------------------
+# npm installation for jupyterhub
+# -----------------------------------------------------------------------
+apt-get -y install npm 
+npm install -g configurable-http-proxy 
+
+# -----------------------------------------------------------------------
+# Install python packages
+# -----------------------------------------------------------------------
+HDF5_DIR=/usr/lib/x86_64-linux-gnu/hdf5/serial pip3 install --break-system-packages --no-binary=h5py h5py
+pip3 install --break-system-packages jupyterhub
+pip3 install --break-system-packages jupyterlab
+pip3 install --break-system-packages oauthenticator
+pip3 install --break-system-packages notebook
+pip3 install --break-system-packages scipy
+pip3 install --break-system-packages sympy
+pip3 install --break-system-packages matplotlib
+pip3 install --break-system-packages yt
+pip3 install --break-system-packages pytest
+pip3 install --break-system-packages scikit-learn
+pip3 install --break-system-packages tensorflow
+pip3 install --break-system-packages torch
+
+# -----------------------------------------------------------------------
+# Clone repo
+# -----------------------------------------------------------------------
+
+git clone https://github.com/np3m/school_nj
+
+# -----------------------------------------------------------------------
+# Update .bashrc and /etc/skel
+# -----------------------------------------------------------------------
+echo "" >> .bashrc
+echo "source awsteiner.org/bashrc_add" >> .bashrc
+# In addition to adding it to .bashrc, we need to make sure the
+# new environment variables are applied here as well
+source awsteiner.org/bashrc_add
+env
+
+# ---------------------------------
+# Add a new user 
+# ---------------------------------
+adduser --system --shell /bin/bash \
+--disabled-password --group  --home /home/awsteiner awsteiner
+
+# ---------------------------------
+# Add awsteiner to sudo group
+# ---------------------------------
+usermod -aG sudo awsteiner
+
