@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------
-# Change to home directory
+# Change to home directory (presuming we're running this script inside
+# the "school_jh" repository
 
 cd
 
@@ -15,13 +16,13 @@ apt-get -y update
 # Install default linux packages
 
 apt-get -y install python3 python3-pip certbot python3-certbot \
-        python3-certbot-nginx nginx docker unzip npm g++ make autoconf \
-        automake libtool curl cmake libz-dev ligsz2 imagemagick \
+        python3-certbot-nginx nginx unzip npm g++ make autoconf \
+        automake libtool curl cmake zlib1g-dev libsz2 imagemagick \
         libgsl-dev libreadline-dev libboost-all-dev libeigen3-dev \
         libopenblas-dev liblapack-dev libarpack2-dev libsuperlu-dev \
         libfftw3-dev texlive dvipng texlive-latex-extra \
         cm-super python3-pip libcairo2-dev libquadmath0 zlib1g-dev \
-        libarmadillo12
+        libarmadillo12 emacs
 
 # Install newer HDF5
 curl -L "https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.14.6-ubuntu-2404_gcc.deb" -o hdf5-1.14.6-ubuntu-2404_gcc.deb
@@ -37,9 +38,16 @@ dpkg -i libarmadillo*.deb
 npm install -g configurable-http-proxy 
 
 # -----------------------------------------------------------------------
+# One of the packages above installed these package, which conflicts with
+# the other python packages 
+
+apt remove python3-typing-extensions python3-jsonschema
+
+# -----------------------------------------------------------------------
 # Install python packages
 
-pip3 install --break-system-packages jupyterhub jupyterlab oauthenticator \
+pip3 install --break-system-packages numpy==2.0.2 \
+     jupyterhub jupyterlab oauthenticator \
      notebook scipy sympy matplotlib yt pytest scikit-learn tensorflow \
      torch 
 
@@ -47,7 +55,7 @@ pip3 install --break-system-packages jupyterhub jupyterlab oauthenticator \
 # Update .bashrc
 
 echo "" >> .bashrc
-echo "source school_jh/bashrc_add" >> .bashrc
+echo "source school_jh/config/bashrc_add" >> .bashrc
 # In addition to adding it to .bashrc, we need to make sure the
 # new environment variables are applied here as well
 source school_jh/bashrc_add
@@ -63,4 +71,38 @@ adduser --system --shell /bin/bash \
 # Add awsteiner to sudo group
 # ---------------------------------
 usermod -aG sudo awsteiner
+
+# ---------------------------------
+# Install o2scl
+# ---------------------------------
+
+cd /opt
+git clone https://github.com/awsteiner/o2scl.git
+cd /opt/o2scl
+git checkout 566fc089fa14888
+autoreconf -i
+LIBS="-lquadmath" LDFLAGS="-L/HDF_Group/HDF5/1.14.6/lib" CXXFLAGS="-O3 -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_COMP -I/usr/include -I/usr/local/lib/python3.12/dist-packages/numpy/_core/include -I/HDF_Group/HDF5/1.14.6/include" ./configure --enable-eigen --enable-openmp --enable-fftw --enable-python --enable-cuda --prefix=/opt/o2scl
+make blank-doc && make && make install
+
+# ---------------------------------
+# Install o2sclpy
+# ---------------------------------
+
+cd /opt
+git clone https://github.com/awsteiner/o2sclpy.git
+cd o2sclpy
+git checkout 6249bbd2e4adc
+pip3 install .
+
+# ---------------------------------
+# Install e4mma
+# ---------------------------------
+
+cd /opt
+git clone https://github.com/np3m/e4mma.git
+cd e4mma
+git checkout andrew
+make eos_nuclei
+
+
 
