@@ -18,7 +18,7 @@ UTKNA_O2SCL_INCS = -I/HDF_Group/HDF5/1.14.6/include -I/usr/include/eigen3 \
 # We have to include openmp in o2scl_libs since it was compiled with
 # openMP support. 
 UTKNA_O2SCL_LIBS = -L/HDF_Group/HDF5/1.14.6/lib -L/opt/o2scl/lib -fopenmp \
- -lo2scl -lhdf5 -lgsl -lreadline -lpython3.12 -lpugixml -lmpfr -lquadmath
+ -lo2scl -lhdf5 -lgsl -lreadline -lpython3.12 
 
 UTKNA_EOS_DIR = /home/awsteiner/wcs/eos
 UTKNA_BAMR_DIR = /home/awsteiner/wcs/bamr
