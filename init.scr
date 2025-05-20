@@ -92,7 +92,7 @@ cd /opt
 git clone https://github.com/awsteiner/o2sclpy.git
 cd o2sclpy
 git checkout 6249bbd2e4adc
-pip3 install .
+pip3 install --break-system-packages .
 
 # ---------------------------------
 # Install e4mma
@@ -101,7 +101,7 @@ pip3 install .
 cd /opt
 git clone https://github.com/np3m/e4mma.git
 cd e4mma
-git checkout andrew
+git checkout 0438911711087e
 make eos_nuclei
 
 

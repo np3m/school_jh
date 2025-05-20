@@ -1,4 +1,5 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/HDF_Group/HDF5/1.14.6/lib:/opt/o2scl/lib
+export PATH=$PATH:/opt/o2scl/bin
 
 export EDITOR=emacs
 
