@@ -10,7 +10,7 @@ UTKNA_FLIBS = -lgfortran
 UTKNA_FFLAGS = -O3
 UTKNA_O2SCL_INCS = -I/usr/local/hdf5/include -I/usr/include/eigen3 \
  $(SHELL_PYTHON_INCLUDES) -DO2SCL_HDF5_COMP -I/opt/o2scl/include \
- -I/home/awsteiner/envs/py312/lib/python3.12/site-packages/numpy/_core/include
+ -I/usr/local/lib/python3.12/site-packages/numpy/_core/include
 
 # We have to include openmp in o2scl_libs since it was compiled with
 # openMP support. 
