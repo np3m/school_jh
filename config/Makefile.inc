@@ -11,7 +11,7 @@ UTKNA_OPENMP_FLAGS = -fopenmp
 UTKNA_MPI_CFLAGS = -DO2SCL_MPI -DANDREW
 UTKNA_FLIBS = -lgfortran
 UTKNA_FFLAGS = -O3
-UTKNA_O2SCL_INCS = -I/usr/local/hdf5/include -I/usr/include/eigen3 \
+UTKNA_O2SCL_INCS = -I/HDF_Group/HDF5/1.14.6/include -I/usr/include/eigen3 \
  $(SHELL_PYTHON_INCLUDES) -DO2SCL_HDF5_COMP -I/opt/o2scl/include \
  -I/usr/local/lib/python3.12/dist-packages/numpy/_core/include
 
