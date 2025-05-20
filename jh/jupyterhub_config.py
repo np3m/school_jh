@@ -854,9 +854,8 @@ c.JupyterHub.ssl_key = '/etc/letsencrypt/live/np3m.cloud/privkey.pem'
 # c.JupyterHub.template_vars = {}
 c.JupyterHub.template_vars = {'announcement_login':
                               ('<b>Note:</b> This JupyterHub '+
-                               'is only for users '+
-                               'to experiment with O<sub>2</sub>scl and '+
-                               'O<sub>2</sub>sclpy. All use is monitored.')}
+                               'is for NP3M only. '+
+                               'All use is monitored.')}
 
 ## Extra settings overrides to pass to the tornado application.
 #  Default: {}
