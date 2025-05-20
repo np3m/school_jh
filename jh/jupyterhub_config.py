@@ -806,14 +806,14 @@ c.JupyterHub.bind_url = 'https://:8000/jh'
 #          When setting this, you should also set ssl_key
 #  Default: ''
 # c.JupyterHub.ssl_cert = ''
-c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/awsteiner.org/fullchain.pem'
+c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/np3m.cloud/fullchain.pem'
 
 ## Path to SSL key file for the public facing interface of the proxy
 #  
 #          When setting this, you should also set ssl_cert
 #  Default: ''
 # c.JupyterHub.ssl_key = ''
-c.JupyterHub.ssl_key = '/etc/letsencrypt/live/awsteiner.org/privkey.pem'
+c.JupyterHub.ssl_key = '/etc/letsencrypt/live/np3m.cloud/privkey.pem'
 
 ## Host to send statsd metrics to. An empty string (the default) disables sending
 #  metrics.
