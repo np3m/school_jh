@@ -1,3 +1,6 @@
+SHELL_PYTHON_LDFLAGS := $(shell python3-config --ldflags)
+SHELL_PYTHON_INCLUDES := $(shell python3-config --includes)
+
 UTKNA_CXX = g++
 UTKNA_FC = gfortran
 UTKNA_MPI_CXX = mpic++
