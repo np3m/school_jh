@@ -101,7 +101,7 @@ pip3 install --break-system-packages .
 cd /opt
 git clone https://github.com/np3m/e4mma.git
 cd e4mma
-git checkout 0438911711087e
+git checkout 90ad4a1813ddf
 make eos_nuclei
 
 
