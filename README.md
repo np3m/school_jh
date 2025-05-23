@@ -18,4 +18,7 @@ can create a Jupyter Hub by doing the following:
 
 * Change to the "jh" directory and run "jh.scr" to start the Jupyter Hub
 
+AWS, 5/23/25: I'm not sure the init.scr is fully automated yet. I had
+to mess around with the python packages a bit because of confusion
+between pip and Ubuntu Python packages.
 
