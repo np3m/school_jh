@@ -79,7 +79,7 @@ usermod -aG sudo awsteiner
 cd /opt
 git clone https://github.com/awsteiner/o2scl.git
 cd /opt/o2scl
-git checkout 23defa6c9efc6
+git checkout bd6944962154f2
 autoreconf -i
 LIBS="-lquadmath" LDFLAGS="-L/HDF_Group/HDF5/1.14.6/lib" CXXFLAGS="-O3 -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_COMP -I/usr/include -I/usr/local/lib/python3.12/dist-packages/numpy/_core/include -I/HDF_Group/HDF5/1.14.6/include" ./configure --enable-eigen --enable-openmp --enable-fftw --enable-python --enable-cuda --prefix=/opt/o2scl
 make blank-doc && make && make install
