@@ -7,7 +7,7 @@
 cd
 
 # -----------------------------------------------------------------------
-# Prevent questions about restarting services
+# Prevent questions about restarting services, etc.
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update 
@@ -79,7 +79,7 @@ usermod -aG sudo awsteiner
 cd /opt
 git clone https://github.com/awsteiner/o2scl.git
 cd /opt/o2scl
-git checkout 566fc089fa14888
+git checkout 23defa6c9efc6
 autoreconf -i
 LIBS="-lquadmath" LDFLAGS="-L/HDF_Group/HDF5/1.14.6/lib" CXXFLAGS="-O3 -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_COMP -I/usr/include -I/usr/local/lib/python3.12/dist-packages/numpy/_core/include -I/HDF_Group/HDF5/1.14.6/include" ./configure --enable-eigen --enable-openmp --enable-fftw --enable-python --enable-cuda --prefix=/opt/o2scl
 make blank-doc && make && make install
@@ -91,7 +91,7 @@ make blank-doc && make && make install
 cd /opt
 git clone https://github.com/awsteiner/o2sclpy.git
 cd o2sclpy
-git checkout 6249bbd2e4adc
+git checkout e5c183101263c
 pip3 install --break-system-packages .
 
 # ---------------------------------
