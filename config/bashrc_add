@@ -1,6 +1,6 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.8/lib64:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/HDF_Group/HDF5/1.14.6/lib:/opt/o2scl/lib
 export PATH=$PATH:/opt/o2scl/bin:/home/awsteiner/bin:/usr/local/cuda-12.8/bin:.
 export UTKNA_MAKEFILE=/root/school_jh/config/Makefile.inc
-
+export O2SCL_ADDL_LIBS=/usr/lib/gcc/x86_64-linux-gnu/13/libgomp.so
 export EDITOR=emacs
 
