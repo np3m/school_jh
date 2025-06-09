@@ -81,7 +81,16 @@ git clone https://github.com/awsteiner/o2scl.git
 cd /opt/o2scl
 git checkout bd6944962154f2
 autoreconf -i
-LDFLAGS="-L/HDF_Group/HDF5/1.14.6/lib -L/usr/local/cuda-12.8/lib64" CXXFLAGS="-O3 -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_COMP -I/usr/include -I/usr/local/lib/python3.12/dist-packages/numpy/_core/include -I/HDF_Group/HDF5/1.14.6/include" LIBS="-lcusolver -lcufft -lcublas -lcudart" ./configure --enable-eigen --enable-openmp --enable-fftw --enable-python --enable-cuda
+cat <<EOF > cconfig
+LDFLAGS="-L/HDF_Group/HDF5/1.14.6/lib -L/usr/local/cuda-12.8/lib64" CXXFLAGS="-O
+3 -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_COMP -I/usr/include -I/usr/local/lib/py
+thon3.12/dist-packages/numpy/_core/include -I/usr/local/cuda-12.8/targets/x86_64
+-linux/include -I/HDF_Group/HDF5/1.14.6/include" LIBS="-lcusolver -lcufft -lcubl
+as -lcudart" ./configure --enable-eigen --enable-openmp --enable-fftw --enable-p
+ython --enable-cuda
+EOF
+chmod 755 cconfig
+./cconfig
 make blank-doc && make && make install
 
 # ---------------------------------
